@@ -1,4 +1,3 @@
-
 // load data from api
 const loadedAllData = async()=>{
     try{
@@ -14,6 +13,18 @@ const loadedAllData = async()=>{
     }
 }
 
-// 
+// create all menu for all categories
+const createMenu = async()=>{
+    const data = await loadedAllData();
+    const allCategories = data.news_category;
+    const menu = document.getElementById('menu-container');
+    allCategories.forEach(category => {
+       const li = document.createElement('li')
+       li.innerHTML = `<a>${category.category_name}</a>`;
+       menu.appendChild(li);
 
-loadedAllData()
+        console.log(category.category_name)
+    });
+}
+
+createMenu()
