@@ -15,7 +15,30 @@ const blogs = [
     answer: 'Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.'}
 ];
 
+// blog post
+const blogsLoaded = (blogs)=> {
+    const blogsContainer = document.getElementById('blogs-container');
+    blogs.forEach(blog =>{
+        const div = document.createElement('div');
+        div.classList.add('card', 'lg:card-side', 'bg-base-100', 'shadow-xl', 'lg:px-4', 'my-2', 'p-2');
+        div.innerHTML = `
+        <div class="card-body">
+            <h2 class="card-title">${blog.question}</h2>
+            <p>${blog.answer}</p>
+        </div`;
+        blogsContainer.appendChild(div);
+    })
 
+}
+const blogShow = ()=>{
+    const blogsContainer = document.getElementById('blogs-container');
+    const newsContainer = document.getElementById('news-container');
+    blogsContainer.classList.remove('hidden');
+    newsContainer.classList.add('hidden');
+
+} 
+
+blogsLoaded(blogs);
 
 
 
