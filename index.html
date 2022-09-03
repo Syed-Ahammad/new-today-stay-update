@@ -8,11 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="px-14 pt-6">
+<body class="px-14 pt-6 bg-slate-100 min-h-screen">
     <header>
         <!-- navbar start -->
        <nav>
-        <div class="navbar bg-base-100">
+        <div class="navbar border-b-4">
             <div class="flex-1">
               <a class="btn btn-ghost normal-case text-red-600 text-base"><span class="text-lime-500 text-4xl">News</span> Today</a>
             </div>
@@ -47,13 +47,29 @@
        <!-- navbar end -->
 
        <!-- menu start -->
-      <div>
-        <ul id="menu-container" class="menu menu-horizontal bg-base-100 rounded-box flex justify-around">
+      <div class="pt-4">
+        <ul id="menu-container" class="menu menu-horizontal rounded-box flex justify-around flex-wrap">
           
           </ul>
       </div>
        <!-- menu end -->
     </header>
+    <main>
+        <p id="news-number" class="normal-case bg-white p-3 rounded my-4 hidden"></p>
+
+        <div id="news-container">
+            <!-- <div class="card lg:card-side bg-base-100 shadow-xl">
+                <figure><img src="https://placeimg.com/400/400/arch" alt="Album"></figure>
+                <div class="card-body">
+                  <h2 class="card-title">New album is released!</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil officiis iusto corrupti fugit sint consequuntur, culpa quisquam quis in reprehenderit fuga esse voluptate beatae cumque totam quae, amet quidem nesciunt..</p>
+                  <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Listen</button>
+                  </div>
+                </div>
+              </div> -->
+        </div>
+    </main>
     <script src="js/app.js"></script>
 </body>
 </html>
