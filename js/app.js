@@ -38,25 +38,37 @@ const displayCard = async(id, event)=>{
    
     newsContainer.innerHTML = '';
     allNews.forEach(news =>{
-        const {author, rating, thumbnail_url, details, title, image_url} = news;
+        const {author,total_view, thumbnail_url, details, title, image_url} = news;
         const div = document.createElement('div');
-        div.classList.add('card', 'lg:card-side', 'bg-base-100', 'shadow-xl', 'lg:p-4', 'my-4', 'p-2');
+        div.classList.add('card', 'lg:card-side', 'bg-base-100', 'shadow-xl', 'lg:px-4', 'my-2', 'p-2');
         div.innerHTML = `
         <figure><img src="${thumbnail_url}" alt="Album"></figure>
         <div class="card-body">
           <h2 class="card-title">${title}</h2>
-          <p>${details.slice(0, 200)}...</p>
-          <div class="card-actions flex justify-between mt-4">
-            <div class="avatar">
-                <div class="w-12 h-12 rounded-full">
-                    <img src=${author.img} />
+          <p class="pb-6">${details.slice(0, 300)}...</p>
+          <div class="card-actions flex justify-between">
+                <div class="avatar">
+                        <div class="w-12 h-12 rounded-full">
+                            <img src=${author.img} />
+                        </div>
+                        <div class="mx-3">
+                            <p>${author.name ? author.name : 'Unknown'}</p>
+                            <p class="text-sm">${author.published_date ? author.published_date : 'Date:.....'} </p>
+                        </div>
                 </div>
-                <div class="mx-3">
-                <p>${author.name}</p>
-                <p>date: </p>
+                <div>
+                    <p><i class="fa-solid fa-eye"></i> ${total_view ? total_view : '00'}</p>
                 </div>
+                 <div class="rating">
+                    <input type="radio" name="rating-1" class="mask mask-star" />
+                    <input type="radio" name="rating-1" class="mask mask-star" checked />
+                    <input type="radio" name="rating-1" class="mask mask-star" />
+                    <input type="radio" name="rating-1" class="mask mask-star" />
+                     <input type="radio" name="rating-1" class="mask mask-star" />
+                 </div>
+            <div>
+            <i class="fa-solid fa-arrow-right text-primary text-xl"></i>
             </div>
-            <button class="btn btn-primary">Details...</button>
           </div>
         </div>`;
         newsContainer.appendChild(div);
