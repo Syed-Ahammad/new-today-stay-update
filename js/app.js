@@ -27,7 +27,9 @@ const getNews = async(id)=>{
     }
 }
 
+// create function for display card
 const displayCard = async(id, event)=>{
+    loadSpinner(true);
     const getAllData = await getNews(id);
     const allNews = getAllData.data;
     const newsContainer = document.getElementById('news-container');
@@ -50,16 +52,24 @@ const displayCard = async(id, event)=>{
         newsContainer.appendChild(div);
         // console.log(news);
     })
-    console.log(event.children[0].innerText);
+    // console.log(event.children[0].innerText);
 
-    if(allNews.length > 0){
-        newsNumber.innerText = `${allNews.length} items found for category ${event.children[0].innerText}`;
-        newsNumber.classList.remove('hidden');
+    try{
+        if(allNews.length > 0){
+            newsNumber.innerText = `${allNews.length} items found for category ${event.children[0].innerText}`;
+            newsNumber.classList.remove('hidden');
+        }
+        else{
+            newsNumber.innerText = `No items found for category ${event.children[0].innerText}`;
+            newsNumber.classList.remove('hidden');
+        }
     }
-    else{
-        newsNumber.innerText = `No items found for category ${event.children[0].innerText}`;
-        newsNumber.classList.remove('hidden');
+    catch(error){
+        console.log(error)
     }
+
+   
+    loadSpinner(false);
 
 }
 
@@ -79,5 +89,17 @@ const createMenu = async()=>{
     });
 }
 
+// create function for spinner
+const loadSpinner = (isLoading)=>{
+    const spinner = document.getElementById('spinner');
+    if(isLoading === true){
+        spinner.classList.remove('hidden');
+    }
+    else{
+        spinner.classList.add('hidden');
+    }
+}
+
 
 createMenu()
+displayCard("08")
