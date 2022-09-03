@@ -34,10 +34,11 @@ const displayCard = async(id, event)=>{
     const allNews = getAllData.data;
     const newsContainer = document.getElementById('news-container');
     const newsNumber = document.getElementById('news-number');
+    newsNumber.innerText = 'All news showing';
    
     newsContainer.innerHTML = '';
     allNews.forEach(news =>{
-        const {author, rating, thumbnail_url, details, title} = news;
+        const {author, rating, thumbnail_url, details, title, image_url} = news;
         const div = document.createElement('div');
         div.classList.add('card', 'lg:card-side', 'bg-base-100', 'shadow-xl', 'lg:p-4', 'my-4', 'p-2');
         div.innerHTML = `
@@ -45,12 +46,21 @@ const displayCard = async(id, event)=>{
         <div class="card-body">
           <h2 class="card-title">${title}</h2>
           <p>${details.slice(0, 200)}...</p>
-          <div class="card-actions justify-end">
+          <div class="card-actions flex justify-between mt-4">
+            <div class="avatar">
+                <div class="w-12 h-12 rounded-full">
+                    <img src=${author.img} />
+                </div>
+                <div class="mx-3">
+                <p>${author.name}</p>
+                <p>date: </p>
+                </div>
+            </div>
             <button class="btn btn-primary">Details...</button>
           </div>
         </div>`;
         newsContainer.appendChild(div);
-        // console.log(news);
+        console.log(news);
     })
     // console.log(event.children[0].innerText);
 
